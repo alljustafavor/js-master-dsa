@@ -13,7 +13,7 @@ class MyArray {
     this.length++;
     return this.length;
   }
-  
+
   pop() {
     const lastElement = this.data[this.length - 1];
     delete this.data[this.length - 1];
@@ -23,10 +23,10 @@ class MyArray {
 
   delete(index) {
     const item = this.data[index];
-    this.shiftItems(index);
+    this.shiftItemsDel(index);
   }
 
-  shiftItems(index) {
+  shiftItemsDel(index) {
     for (let i = index; i < this.length - 1; i++) {
       this.data[i] = this.data[i + 1];
     }
@@ -34,11 +34,32 @@ class MyArray {
     this.length--;
   }
 
+  unshift(item) {
+    for (let i = this.length; i > 0; i--) {
+      this.data[i] = this.data[i - 1];
+    }
+    
+    this.data[0] = item;
+    this.length++
+    return this.length;
+  }
+
+  insert(index, item) {
+    this.length++;
+    for (let i = this.length - 1; i > 0; i--) {
+      this.data[i] = this.data[i - 1];
+    }
+    this.data[index] = item;
+    return this.length
+  };
+
 }
 
-const newArr = new MyArray();
-newArr.push('hi');
-newArr.push('you');
-newArr.push('guyssss!')
-newArr.delete(1)
-console.log(newArr);
+const Arr = new MyArray();
+
+Arr.push("world!");
+Arr.unshift("Hello, ");
+Arr.insert(1, 'wutup ')
+
+
+console.log(Arr);
