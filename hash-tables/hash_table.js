@@ -33,13 +33,13 @@ class HashTable {
     return undefined;
   } // Collision: O(n) | !Collision: O(1)
 
-  keys() {
+  keys() { // No order
     let addressArray = [];
-    this.data.forEach((element) => {
-      if (element != typeof Array) {
-        addressArray.push(element);
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) {
+        addressArray.push(this.data[i][0][0])
       }
-    });
+    }
     return addressArray;
   }
 }
