@@ -9,16 +9,16 @@ class HashTable {
       hash = (hash + key.charCodeAt(i) * i) % this.data.length;
     }
     return hash;
-  }
+  } // O(n)
 
   set(key, value) {
     let address = this._hash(key);
     if (!this.data[address]) {
       this.data[address] = [];
-    } 
+    }
     this.data[address].push([key, value]);
-    return this.data
-  }
+    return this.data;
+  } // O(1)
 
   get(key) {
     let address = this._hash(key);
@@ -31,13 +31,23 @@ class HashTable {
       }
     }
     return undefined;
+  } // Collision: O(n) | !Collision: O(1)
+
+  keys() {
+    let addressArray = [];
+    this.data.forEach((element) => {
+      if (element != typeof Array) {
+        addressArray.push(element);
+      }
+    });
+    return addressArray;
   }
-  
 }
 
 const myHashTable = new HashTable(50);
-myHashTable.set('grapes', 10000);
-myHashTable.set('apples', 45)
-console.log(myHashTable.get('grapes')); 
-console.log(myHashTable);
+myHashTable.set("grapes", 10000);
+myHashTable.set("apples", 45);
+myHashTable.set('pairs', 10);
+myHashTable.get("grapes");
+console.log(myHashTable.keys());
 
