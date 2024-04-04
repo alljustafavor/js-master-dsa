@@ -31,9 +31,9 @@ const mergeSortedArrays_Exercise = (arr_one, arr_two) => {
 }
 
 console.log(mergeSortedArrays_Exercise([1, 4, 6, 8], [2, 3, 9]));
-console.log(mergeSortedArrays_Exercise([], [1]));  
-console.log(mergeSortedArrays_Exercise([1], []));  
-console.log(mergeSortedArrays_Exercise([1, 5], [2, 3, 4]));  
+console.log(mergeSortedArrays_Exercise([], [1]));
+console.log(mergeSortedArrays_Exercise([1], []));
+console.log(mergeSortedArrays_Exercise([1, 5], [2, 3, 4]));
 console.log(mergeSortedArrays_Exercise([2, 2, 3, 3, 4], [5, 5, 6, 8, 8]));
 
 const mergeSortedArrays_Solution = (array1, array2) => {
@@ -62,8 +62,8 @@ const mergeSortedArrays_Solution = (array1, array2) => {
 }
 
 console.log(mergeSortedArrays_Solution([1, 4, 6, 8], [0, 2, 3, 9]));
-console.log(mergeSortedArrays_Solution([], [1]));  
-console.log(mergeSortedArrays_Solution([1], []));  
-console.log(mergeSortedArrays_Solution([1, 5], [2, 3, 4]));  
+console.log(mergeSortedArrays_Solution([], [1]));
+console.log(mergeSortedArrays_Solution([1], []));
+console.log(mergeSortedArrays_Solution([1, 5], [2, 3, 4]));
 console.log(mergeSortedArrays_Solution([2, 2, 3, 3, 4], [5, 5, 6, 8, 8]));
 
