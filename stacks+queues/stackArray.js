@@ -8,11 +8,13 @@ class Stack {
   }
 
   push(value) {
-    return this.data.push(value);
+    this.data.push(value);
+    return this;
   }
 
   pop() {
-    return this.data.pop();
+    this.data.pop();
+    return this;
   }
 
   isEmpty() {
