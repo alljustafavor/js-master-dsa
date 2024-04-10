@@ -33,7 +33,7 @@ class HashTable {
     return undefined;
   } // Collision: O(n) | !Collision: O(1)
 
-   keys() {
+  keys() {
     if (!this.data.length) return undefined
     let result = []
     for (let i = 0; i < this.data.length; i++) {

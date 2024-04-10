@@ -1,29 +1,16 @@
-// Linked List 10->5->16
-
-let myLinkedList = {
-  head: {
-    value: 10,
-    next: {
-      value: 5,
-      next: {
-        value: 16,
-        next: null,
-      },
-    },
-  },
-};
-// console.log(myLinkedList);
 class Node {
   constructor(value) {
     this.value = value;
+    this.prev = null;
     this.next = null;
   }
 }
 
-class LinkedList {
+class DoublyLinkedList {
   constructor(value) {
     this.head = {
       value: value,
+      prev: null,
       next: null,
     };
     this.tail = this.head; // setting head and tail to be at the same starting "index"
@@ -32,6 +19,7 @@ class LinkedList {
 
   append(value) {
     const node = new Node(value);
+    node.prev = this.taill;
     this.tail.next = node;
     this.tail = node;
     this.length++;
@@ -41,6 +29,7 @@ class LinkedList {
   prepend(value) {
     const node = new Node(value);
     node.next = this.head;
+    this.head.prev = node;
     this.head = node;
     this.length++;
     return this;
@@ -69,10 +58,12 @@ class LinkedList {
 
     const node = new Node(value);
     const leader = this.traverseToIndex(index - 1);
-    const sub = leader.next;
+    const follower = leader.next;
 
     leader.next = node;
-    node.next = sub;
+    node.prev = leader;
+    node.next = follower;
+    follower.prev = node;
     this.length++;
     return this;
   }
@@ -86,8 +77,9 @@ class LinkedList {
       return this;
     }
     const leader = this.traverseToIndex(index - 1);
-    const unwantedNode = leader.next;
-    leader.next = unwantedNode.next;
+    const follower = leader.next;
+    leader.next = follower.next;
+    follower.prev = leader;
     this.length--;
     return this;
   }
@@ -104,32 +96,14 @@ class LinkedList {
     }
     return currentNode;
   }
-
-  reverse() {
-    if (!this.head.next) return this.head;
-
-    let first = this.head;
-    this.tail = this.head;
-    let second = first.next;
-    while (second) {
-      const temp = second.next;
-      second.next = first;
-      first = second;
-      second = temp;
-    }
-    this.head.next = null;
-    this.head = first;
-    return this;
-  }
 }
 
-const joesLinkedList = new LinkedList(10);
+const joesLinkedList = new DoublyLinkedList(10);
 joesLinkedList.append(5);
 joesLinkedList.append(16);
 joesLinkedList.prepend(1);
 joesLinkedList.insert(2, 99);
 joesLinkedList.insert(5, 100);
 joesLinkedList.remove(2);
-joesLinkedList.remove(2);
-joesLinkedList.reverse();
+//joesLinkedList.remove(2);
 console.log(joesLinkedList.printList());
